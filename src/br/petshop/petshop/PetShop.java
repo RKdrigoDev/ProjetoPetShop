@@ -12,4 +12,14 @@ public class PetShop implements Relatorio, Calculavel {
     private ArrayList<Animal> listaAnimal= new ArrayList<>();
     private ArrayList<Servico> listaServico=new ArrayList<>();
     private ArrayList<Atendimento> listaAtendimento=new ArrayList<>();
+
+    @Override
+    public double calcularTotal() {
+        return 0;
+    }
+
+    @Override
+    public String gerarResumo() {
+        return "";
+    }
 }
