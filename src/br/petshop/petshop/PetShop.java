@@ -19,13 +19,23 @@ public class PetShop implements Relatorio, Calculavel {
     public void registrarServico(Servico s){
         listaServico.add(s);
     }
+    public void gerarAtendimento(Animal a, Servico s){
+        Atendimento t= new Atendimento(a,s);
+        listaAtendimento.add(t);
+    }
 
     @Override
     public double calcularTotal() {
+        double custo;
         double total =0;
-        for (Servico i: listaServico){
+        for (Atendimento t: listaAtendimento){
+            Animal animal=t.getAnimal();
+            Servico servico=t.getServico();
+            custo=servico.calcularCusto(animal);
+            total+=custo;
 
         }
+        return total;
     }
 
     @Override
