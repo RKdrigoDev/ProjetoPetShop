@@ -40,10 +40,30 @@ public class PetShop implements Relatorio, Calculavel {
 
     @Override
     public String gerarResumo() {
-        String resumo = "=== RELATÓRIO ===\n";
-        for (Animal a : listaAnimal){
-            resumo+= a.getNome()+"- Peso: "+a.getPeso()+"kg\n";
+        String resumo = "=== RELATÓRIO ===\n\n";
+
+        resumo += "--- ANIMAIS ---\n";
+        for (Animal a : listaAnimal) {
+            resumo += "• " + a.getNome() + " - " + a.getPeso() + "kg\n";
         }
+
+        resumo += "\n--- SERVIÇOS DISPONÍVEIS ---\n";
+        for (Servico s : listaServico) {
+            resumo += "• " + s.getDescricao() + " (" + s.getDuracao() + " min)\n";
+        }
+
+        resumo += "\n--- ATENDIMENTOS ---\n";
+        for (Atendimento atend : listaAtendimento) {
+            double custo = atend.getServico().calcularCusto(atend.getAnimal());
+            resumo += "• " + atend.getAnimal().getNome() + " - "
+                    + atend.getServico().getDescricao()
+                    + " - R$ " + String.format("%.2f", custo) + "\n";
+        }
+
+        resumo += "\n--- TOTAL ---\n";
+        resumo += "Total: R$ " + String.format("%.2f", calcularTotal()) + "\n";
+
         return resumo;
+
     }
 }
