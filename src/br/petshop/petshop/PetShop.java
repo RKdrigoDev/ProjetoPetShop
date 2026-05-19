@@ -13,13 +13,27 @@ public class PetShop implements Relatorio, Calculavel {
     private ArrayList<Servico> listaServico=new ArrayList<>();
     private ArrayList<Atendimento> listaAtendimento=new ArrayList<>();
 
+    public void cadastrarAnimal(Animal a){
+        listaAnimal.add(a);
+    }
+    public void registrarServico(Servico s){
+        listaServico.add(s);
+    }
+
     @Override
     public double calcularTotal() {
-        return 0;
+        double total =0;
+        for (Servico i: listaServico){
+
+        }
     }
 
     @Override
     public String gerarResumo() {
-        return "";
+        String resumo = "=== RELATÓRIO ===\n";
+        for (Animal a : listaAnimal){
+            resumo+= a.getNome()+"- Peso: "+a.getPeso()+"kg\n";
+        }
+        return resumo;
     }
 }
